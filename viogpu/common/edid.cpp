@@ -142,7 +142,20 @@ static VIC_MODE gpu_vic_mode_table[] =
     {127, {5120, 2160} },
 };
 
-VIOGPU_DISP_MODE gpu_disp_modes[64] = {0};
+VIOGPU_DISP_MODE gpu_disp_modes[64] =
+{
+#if NTDDI_VERSION > NTDDI_WINBLUE
+    {640, 480},
+    {800, 600},
+#endif
+    {1024, 768},
+    {1280, 1024},
+    {1920, 1080},
+#if NTDDI_VERSION > NTDDI_WINBLUE
+    {2560, 1600},
+#endif
+    {0, 0},
+};
 
 UCHAR g_gpu_edid[EDID_V1_BLOCK_SIZE] = {
     0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF ,0xFF, 0x00, // Header

@@ -1,27 +1,12 @@
 #include "viogpu_vidpn.h"
 #include "viogpu_adapter.h"
+#include "edid.h"
 #include "bitops.h"
 #include "baseobj.h"
 
 #if defined(EVENT_TRACING)
 #include "viogpu_vidpn.tmh"
 #endif
-
-VIOGPU_DISP_MODE gpu_disp_modes[16] =
-{
-#if NTDDI_VERSION > NTDDI_WINBLUE
-    {640, 480},
-    {800, 600},
-#endif
-    {1024, 768},
-    {1280, 1024},
-    {1920, 1080},
-#if NTDDI_VERSION > NTDDI_WINBLUE
-    {2560, 1600},
-#endif
-    {0, 0},
-};
-
 
 
 PAGED_CODE_SEG_BEGIN
@@ -1455,46 +1440,6 @@ VOID VioGpuVidPN::BlackOutScreen(CURRENT_MODE* pCurrentMod)
     DbgPrint(TRACE_LEVEL_VERBOSE, ("<--- %s\n", __FUNCTION__));
 }
 
-static UCHAR g_gpu_edid[EDID_V1_BLOCK_SIZE] = {
-    0x00, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF ,0xFF, 0x00, // Header
-    0x49, 0x14,                                     // Manufacturef Id
-    0x34, 0x12,                                     // Manufacturef product code
-    0x00, 0x00, 0x00, 0x00,                         // serial number
-    0xff, 0x1d,                                     // year of manufacture
-    0x01,                                           // EDID version
-    0x04,                                           // EDID revision
-    0xa3,                                           // VideoInputDefinition digital, 8-bit, HDMI
-    0x00,                                           //MaximumHorizontalImageSize
-    0x00,                                           //MaximumVerticallImageSize
-    0x78,                                           //DisplayTransferCharacteristics
-    0x22,                                           //FeatureSupport
-    0xEE, 0x95, 0xA3, 0x54, 0x4C,                   //ColorCharacteristics
-    0x99, 0x26, 0x0F, 0x50, 0x54,
-    0x00, 0x00,                                     //EstablishedTimings
-    0x00,                                           //ManufacturerTimings
-    0x01, 0x01,                                     //StandardTimings[8]
-    0x01, 0x01,
-    0x01, 0x01,
-    0x01, 0x01,
-    0x01, 0x01,
-    0x01, 0x01,
-    0x01, 0x01,
-    0x01, 0x01,
-    0x6c, 0x20, 0x80, 0x30, 0x42, 0x00,             // Descriptor 1
-    0x32, 0x30, 0x40, 0xc0, 0x13, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x1e,
-    0x00, 0x00, 0x00, 0xFD, 0x00, 0x32,             // Descriptor 2
-    0x7d, 0x1e, 0xa0, 0x78, 0x01, 0x0a,
-    0x20, 0x20 ,0x20, 0x20, 0x20, 0x20,
-    0x00, 0x00, 0x00, 0x10, 0x00, 0x00,             // Descriptor 3
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x10, 0x00, 0x00,             // Descriptor 4
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-    0x00,                                           // Number of Extentions
-    0x00                                            // CheckSum
-};
 
 PBYTE VioGpuVidPN::GetEdidData(UINT Id)
 {
@@ -1579,7 +1524,7 @@ BOOLEAN VioGpuVidPN::GetEdids(void)
 void VioGpuVidPN::AddEdidModes(void)
 {
     PAGED_CODE();
-    ESTABLISHED_TIMINGS est_timing = ((PEDID_DATA_V1)(GetEdidData(0)))->EstablishedTimings;
+    ESTABLISHED_TIMINGS_1_2 est_timing = ((PEDID_DATA_V1)(GetEdidData(0)))->EstablishedTimings;
     MANUFACTURER_TIMINGS manufact_timing = ((PEDID_DATA_V1)(GetEdidData(0)))->ManufacturerTimings;
     int modecount = 0;
     while (gpu_disp_modes[modecount].XResolution != 0 && gpu_disp_modes[modecount].XResolution != 0) modecount++;
