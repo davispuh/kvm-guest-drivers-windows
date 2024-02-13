@@ -459,7 +459,7 @@ NTSTATUS VioGpuAdapter::QueryAdapterInfo(_In_ CONST DXGKARG_QUERYADAPTERINFO* pQ
     {
     case DXGKQAITYPE_UMDRIVERPRIVATE: {
         if (pQueryAdapterInfo->OutputDataSize < sizeof(VIOGPU_ADAPTERINFO)) {
-            DbgPrint(TRACE_LEVEL_ERROR, ("pQueryAdapterInfo->OutputDataSize (0x%u) is smaller than sizeof(VIOGPU_ADAPTERINFO) (0x%u)\n", pQueryAdapterInfo->OutputDataSize, sizeof(VIOGPU_ADAPTERINFO)))
+            DbgPrint(TRACE_LEVEL_ERROR, ("pQueryAdapterInfo->OutputDataSize (0x%u) is smaller than sizeof(VIOGPU_ADAPTERINFO) (0x%u)\n", pQueryAdapterInfo->OutputDataSize, sizeof(VIOGPU_ADAPTERINFO)));
             return STATUS_BUFFER_TOO_SMALL;
         }
         VIOGPU_ADAPTERINFO* info = (VIOGPU_ADAPTERINFO*)pQueryAdapterInfo->pOutputData;

@@ -277,7 +277,7 @@ NTSTATUS VioGpuAllocation::DxgkCreateAllocation(VioGpuAdapter* adapter, DXGKARG_
     allocationInfo->SupportedReadSegmentSet = 0b1;
     allocationInfo->SupportedWriteSegmentSet = 0b1;
 
-    DbgPrint(TRACE_LEVEL_INFORMATION, ("<--- %s res_id=%d size=%d\n", __FUNCTION__, allocation->GetId(), allocationInfo->Size));
+    DbgPrint(TRACE_LEVEL_INFORMATION, ("<--- %s res_id=%d size=%I64d\n", __FUNCTION__, allocation->GetId(), (long long)allocationInfo->Size));
     return STATUS_SUCCESS;
 }
 

@@ -468,11 +468,11 @@ VioGpu3DDescribeAllocation(
 )
 {
     PAGED_CODE();
-    VIOGPU_ASSERT_CHK(hAdapter != NULL);
+    VIOGPU_ASSERT(hAdapter != NULL);
     DbgPrint(TRACE_LEVEL_VERBOSE, ("<---> %s\n", __FUNCTION__));
 
     VioGpuAllocation* pAllocation = reinterpret_cast<VioGpuAllocation*>(pDescribeAllocation->hAllocation);
-    VIOGPU_ASSERT_CHK(pAllocation != NULL);
+    VIOGPU_ASSERT(pAllocation != NULL);
 
     return pAllocation->DescribeAllocation(pDescribeAllocation);
 }
@@ -500,7 +500,7 @@ VioGpu3DCloseAllocation(
 )
 {
     PAGED_CODE();
-    VIOGPU_ASSERT_CHK(hDevice != NULL);
+    VIOGPU_ASSERT(hDevice != NULL);
     DbgPrint(TRACE_LEVEL_VERBOSE, ("<---> %s\n", __FUNCTION__));
 
     for (ULONG i = 0; i < pCloseAllocation->NumAllocations; i++) {
@@ -567,7 +567,7 @@ VioGpu3DBuildPagingBuffer(
 )
 {
     PAGED_CODE();
-    VIOGPU_ASSERT_CHK(hAdapter != NULL);
+    VIOGPU_ASSERT(hAdapter != NULL);
     VIOGPU_ASSERT(pBuildPagingBuffer != NULL);
     
     DbgPrint(TRACE_LEVEL_VERBOSE, ("---> %s operation=%d\n", __FUNCTION__, pBuildPagingBuffer->Operation));
