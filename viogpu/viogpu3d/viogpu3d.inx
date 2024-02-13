@@ -28,7 +28,6 @@ VioGpu3D_Files.Usermode = 13 ; DriverStore
 viogpu3d.sys = 1,,f
 viogpu_d3d10.dll = 1,,
 viogpu_wgl.dll = 1,,
-z.dll = 1,,
 
 [Manufacturer]
 %RHEL%=RHEL,NT$ARCH$
@@ -42,7 +41,6 @@ viogpu3d.sys,,,2
 [VioGpu3D_Files.Usermode]
 viogpu_d3d10.dll,,,0
 viogpu_wgl.dll,,,0
-z.dll,,,0
 
 [VioGpu3D_Inst]
 Include=msdv.inf
