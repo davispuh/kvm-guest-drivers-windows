@@ -3,6 +3,10 @@
 #include "bitops.h"
 #include "baseobj.h"
 
+#if defined(EVENT_TRACING)
+#include "viogpu_vidpn.tmh"
+#endif
+
 VIOGPU_DISP_MODE gpu_disp_modes[16] =
 {
 #if NTDDI_VERSION > NTDDI_WINBLUE

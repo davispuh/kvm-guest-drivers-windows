@@ -5,6 +5,10 @@
 #include "viogpu_adapter.h"
 #include "virgl_hw.h"
 
+#if defined(EVENT_TRACING)
+#include "viogpu_allocation.tmh"
+#endif
+
 VioGpuAllocation::VioGpuAllocation(VioGpuAdapter *adapter, VIOGPU_RESOURCE_OPTIONS* options)
 {
     DbgPrint(TRACE_LEVEL_VERBOSE, ("---> %s\n", __FUNCTION__));

@@ -3,6 +3,10 @@
 #include "viogpu_adapter.h"
 #include "baseobj.h"
 
+#if defined(EVENT_TRACING)
+#include "viogpu_command.tmh"
+#endif
+
 #pragma code_seg(push)
 #pragma code_seg()
 

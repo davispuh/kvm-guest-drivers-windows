@@ -80,7 +80,7 @@ DriverEntry(
     _In_  UNICODE_STRING* pRegistryPath)
 {
     PAGED_CODE();
-    WPP_INIT_TRACING(pDriverObject, pRegistryPath)
+    WPP_INIT_TRACING(pDriverObject, pRegistryPath);
     DbgPrint(TRACE_LEVEL_FATAL, ("---> VIOGPU FULL build on on %s %s\n", __DATE__, __TIME__));
     DRIVER_INITIALIZATION_DATA InitialData = { 0 };
 

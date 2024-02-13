@@ -34,8 +34,9 @@
 #include "bitops.h"
 #include "viogpum.h"
 #include "viogpu_device.h"
+
 #if defined(EVENT_TRACING)
-#include "viogpudo.tmh"
+#include "viogpu_adapter.tmh"
 #endif
 
 static UINT g_InstanceId = 0;

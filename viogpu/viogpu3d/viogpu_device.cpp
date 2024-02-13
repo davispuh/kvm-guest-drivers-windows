@@ -3,6 +3,10 @@
 #include "baseobj.h"
 #include "virgl_hw.h"
 
+#if defined(EVENT_TRACING)
+#include "viogpu_device.tmh"
+#endif
+
 PAGED_CODE_SEG_BEGIN
 
 VioGpuDevice::VioGpuDevice(VioGpuAdapter* pAdapter) {
