@@ -34,7 +34,7 @@
 #include "bitops.h"
 #include "viogpum.h"
 #include "viogpu_device.h"
-#if !DBG
+#if defined(EVENT_TRACING)
 #include "viogpudo.tmh"
 #endif
 

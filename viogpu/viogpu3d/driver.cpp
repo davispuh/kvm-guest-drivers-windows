@@ -32,7 +32,7 @@
 #include "baseobj.h"
 #include "viogpu_adapter.h"
 #include "viogpu_device.h"
-#if !DBG
+#if defined(EVENT_TRACING)
 #include "driver.tmh"
 #endif
 
