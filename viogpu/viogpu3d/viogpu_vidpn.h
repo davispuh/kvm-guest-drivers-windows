@@ -1,6 +1,7 @@
 #pragma once
 
-#include "helper.h"
+#include "viogpu.h"
+#include "viogpu_queue.h"
 
 class VioGpuAdapter;
 class VioGpuAllocation;

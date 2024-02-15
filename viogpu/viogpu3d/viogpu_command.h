@@ -1,6 +1,6 @@
 #pragma once
 
-#include "helper.h"
+#include "viogpu.h"
 
 #define VIOGPU_MAX_RUNNING 1
 

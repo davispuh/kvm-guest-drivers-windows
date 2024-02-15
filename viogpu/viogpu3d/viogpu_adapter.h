@@ -29,7 +29,7 @@
 
 #pragma once
 
-#include "helper.h"
+#include "viogpu.h"
 #include "viogpu_allocation.h"
 #include <viogpu_command.h>
 #include <viogpu_vidpn.h>

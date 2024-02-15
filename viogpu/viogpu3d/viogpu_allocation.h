@@ -1,5 +1,5 @@
 #pragma once
-#include "helper.h"
+#include "viogpu.h"
 #include "virgl_hw.h"
 
 class VioGpuAdapter;
